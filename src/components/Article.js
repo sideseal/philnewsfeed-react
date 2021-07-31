@@ -4,23 +4,26 @@ import PropTypes from "prop-types";
 
 function Article({id,name,title,published,link}){
     return (
-        <Link to={{
-            pathname:`/article/${id}`,
-            state: {
-                name:name,
-                title:title,
-                published:published,
-                link:link,
-            }
-        }}>
-            <div className="article">
+        <div className="article">
+            <Link 
+                to={{
+                    pathname:`/article/${id}`,
+                    state: {
+                        id:id,
+                        name:name,
+                        title:title,
+                        published:published,
+                        link:link,
+                    }
+                }}
+            >
                 <div className="article__data">
                     <h4 className="article__title">{title}</h4>
                     <h5 className="article__info">{name} | {published}</h5>
                     <hr></hr>
                 </div>
-            </div>
-        </Link>
+            </Link>
+        </div>
     );
 }
 
