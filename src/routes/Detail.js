@@ -1,5 +1,6 @@
 import React from "react";
-import Comment from '../components/Comment';
+import InputComments from '../components/InputComments';
+import ShowComments from '../components/ShowComments';
 
 class Detail extends React.Component{
     componentDidMount(){
@@ -16,7 +17,8 @@ class Detail extends React.Component{
                 <h3><a href={location.state.link}>{location.state.title}</a></h3>
                 <h4>{location.state.name} | {location.state.published}</h4>
                 {/* This is Comment Section Below */}
-                <Comment data={data}/>
+                <InputComments data={data}/>
+                <ShowComments data={data}/>
             </div>
         );
     }
