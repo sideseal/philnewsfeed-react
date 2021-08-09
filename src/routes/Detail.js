@@ -1,6 +1,6 @@
 import React from "react";
-import InputComments from '../components/InputComments';
-import ShowComments from '../components/ShowComments';
+import InputComments from '../functions/InputComments';
+import ShowComments from '../functions/ShowComments';
 
 class Detail extends React.Component{
     componentDidMount(){

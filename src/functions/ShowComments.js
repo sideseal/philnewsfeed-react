@@ -1,15 +1,16 @@
 import React from "react";
 import axios from "axios";
-import Comment from './components/Comment'
+import Comment from '../components/Comment'
 
 class ShowComments extends React.Component {
     state = {
         isLoading: true,
-        comments: []
+        comments: [],
     };
 
     getComments = async () => {
-        const { data: { body } } = await axios.get("", { params: { id: id } });
+        const articleId = this.props.data.state.id
+        const { data: { body } } = await axios.get("https://iknsm5uz03.execute-api.ap-northeast-2.amazonaws.com/default/getComments", { params: { article_id: articleId } });
         const comments = body
         this.setState({ comments, isLoading: false })
     };
@@ -29,7 +30,7 @@ class ShowComments extends React.Component {
                 ) : (
                     <div className="comments">
                         {comments.map(comment => (
-                            <Comment key={comment.id} id={comment.id} name={comment.name} articleId={comment.articleId} date={comment.date} text={comment.text} />
+                            <Comment key={comment.id} id={comment.id} name={comment.name} articleId={comment.article_id} date={comment.date} text={comment.text} />
                         ))}
                     </div>
                 )}
