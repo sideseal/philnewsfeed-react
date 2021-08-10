@@ -13,8 +13,7 @@ function getFormatDate(date) {
 class InputComments extends React.Component {
     inputComment = event => {
         event.preventDefault();
-        console.log(this.state)
-        const articleId = this.props.data.state.id
+        const articleId = this.props.data;
         const comment = {
             // id는 임시 고정. 유저 id를 의미함.
             "id": 3,
@@ -29,6 +28,8 @@ class InputComments extends React.Component {
             //     console.log(res);
             //     console.log(res.data);
             // })
+
+        this.props.getInput(comment);
     }
 
     render() {
@@ -47,7 +48,7 @@ class InputComments extends React.Component {
                             required ref={(input) => this.text = input}>
                             </textarea>
                         <div className="comment__actions">
-                            <button type="submit">Post Comment</button>
+                            <button type="submit" onClick={this.sendInput}>Post Comment</button>
                         </div>
                     </form>
                 </div>
