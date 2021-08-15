@@ -25,6 +25,16 @@ class CommentBox extends React.Component {
     componentDidMount() {
         this.getComments();
     }
+    
+    getCommentsCount(commentCount) {
+        if (commentCount === 0) {
+            return 'No comments yet';
+        } else if (commentCount === 1) {
+            return "1 comment";
+        } else {
+            return `${commentCount} comments`;
+        }
+    }
 
     render() {
         const {isLoading, comments } = this.state;
@@ -40,17 +50,25 @@ class CommentBox extends React.Component {
                         <span className="loader__text">Loading...</span>
                     </div>
                 ) : (
+                    <>
+                    <h4>
+                        {this.getCommentsCount(comments.length)}
+                    </h4>
                     <div className="comments">
-                        {comments.map(comment => (
+                        {comments
+                        .sort((a, b) => new Date(b.comment_date) - new Date(a.comment_date))
+                        .map((comment, i) => (
                             <Comment 
-                            key={comment.id} 
+                            key={i} 
                             id={comment.id} 
                             name={comment.name} 
                             articleId={comment.article_id} 
                             date={comment.date} 
-                            text={comment.text} />
+                            text={comment.text}
+                            comment_date={comment.comment_date} />
                         ))}
                     </div>
+                    </>
                 )}
             </section>
             </>

@@ -7,7 +7,11 @@ function getFormatDate(date) {
     month = month >= 10 ? month : '0' + month;
     var day = date.getDate();
     day = day >= 10 ? day : '0' + day;
-    return year + '-' + month + '-' + day;
+    var hour = date.getHours();
+    hour = hour >= 10 ? hour : '0' + hour;
+    var minutes = date.getMinutes();
+    minutes = minutes >= 10 ? minutes : '0' + minutes;
+    return year + '-' + month + '-' + day + ', at ' + hour + ':' + minutes;
 }
 
 class InputComments extends React.Component {
@@ -20,7 +24,8 @@ class InputComments extends React.Component {
             "article_id": articleId,
             "name": this.name.value,
             "text": this.text.value,
-            "date": getFormatDate(new Date())
+            "date": getFormatDate(new Date()),
+            "comment_date": Date()
         }
 
         axios.post('https://t4lqrwfmpl.execute-api.ap-northeast-2.amazonaws.com/default/inputComment', { ...comment })
@@ -30,6 +35,8 @@ class InputComments extends React.Component {
             // })
 
         this.props.getInput(comment);
+        this.name.value = "";
+        this.text.value = "";
     }
 
     render() {
@@ -48,7 +55,7 @@ class InputComments extends React.Component {
                             required ref={(input) => this.text = input}>
                             </textarea>
                         <div className="comment__actions">
-                            <button type="submit" onClick={this.sendInput}>Post Comment</button>
+                            <button type="submit" onClick={this.handleSubmit}>Post Comment</button>
                         </div>
                     </form>
                 </div>

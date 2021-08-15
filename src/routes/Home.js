@@ -11,7 +11,8 @@ class Home extends React.Component {
     getArticles = async () => {
         const { data: { body } } = await axios.get("https://vvoary23fi.execute-api.ap-northeast-2.amazonaws.com/default/getPhilArticle");
         const articles = body
-        this.setState({ articles, isLoading: false })
+        const sortedArticles = articles.sort((a,b) => new Date(b.published) - new Date(a.published));
+        this.setState({ articles: sortedArticles, isLoading: false })
     };
 
     componentDidMount() {
@@ -28,7 +29,8 @@ class Home extends React.Component {
                     </div>
                 ) : (
                     <div className="articles">
-                        {articles.map(article => (
+                        {articles
+                        .map(article => (
                             <Article key={article.id} id={article.id} name={article.name} title={article.title} published={article.published} link={article.link} />
                         ))}
                     </div>

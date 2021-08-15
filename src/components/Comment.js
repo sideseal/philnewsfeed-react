@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-function Comment({id,name,articleId,date,text}){
+function Comment({id,name,articleId,date,text,comment_date}){
     return (
         <div className="comment">
                 <div className="comment_data">
@@ -18,7 +18,8 @@ Comment.propTypes = {
     name: PropTypes.string.isRequired,
     articleId: PropTypes.number.isRequired,
     date: PropTypes.string.isRequired,
-    text: PropTypes.string.isRequired
+    text: PropTypes.string.isRequired,
+    comment_date: PropTypes.string.isRequired
 };
 
 export default Comment;
