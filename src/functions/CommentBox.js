@@ -40,10 +40,6 @@ class CommentBox extends React.Component {
         const {isLoading, comments } = this.state;
         const data = this.props.data.state.id;
         return (
-            <>
-            <div className="comment__input">
-                <CommentInput data={data} getInput={this.getInput}/>
-            </div>
             <section className="container">
                 {isLoading ? (
                     <div className="loader">
@@ -51,6 +47,9 @@ class CommentBox extends React.Component {
                     </div>
                 ) : (
                     <>
+                    <div className="comment__input">
+                        <CommentInput data={data} getInput={this.getInput} />
+                    </div>
                     <h4>
                         {this.getCommentsCount(comments.length)}
                     </h4>
@@ -71,7 +70,6 @@ class CommentBox extends React.Component {
                     </>
                 )}
             </section>
-            </>
         );
     }
 }

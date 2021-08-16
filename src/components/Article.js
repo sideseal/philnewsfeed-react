@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-function Article({id,name,title,published,link}){
+function Article({id,name,title,published,link,comments}){
     return (
         <div className="article">
             <Link 
@@ -14,11 +14,12 @@ function Article({id,name,title,published,link}){
                         title:title,
                         published:published,
                         link:link,
+                        comments:comments,
                     }
                 }}
             >
                 <div className="article__data">
-                    <h4 className="article__title">{title}</h4>
+                    <h4 className="article__title">{title} [{comments}]</h4>
                     <h5 className="article__info">{name} | {published}</h5>
                     <hr></hr>
                 </div>
@@ -32,7 +33,8 @@ Article.propTypes = {
     name: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     published: PropTypes.string.isRequired,
-    link: PropTypes.string.isRequired
+    link: PropTypes.string.isRequired,
+    comments: PropTypes.number.isRequired,
 };
 
 export default Article;
