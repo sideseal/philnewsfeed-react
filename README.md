@@ -1,4 +1,4 @@
-#philNewsFeed - react
+# philNewsFeed - react
 
 need to install:    
 init: nodejs, npm, npx, git    
