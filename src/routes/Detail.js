@@ -8,6 +8,7 @@ class Detail extends React.Component{
             history.push("/");
         }
     }
+
     render(){
         const { location } = this.props;
         const data = this.props.location;
