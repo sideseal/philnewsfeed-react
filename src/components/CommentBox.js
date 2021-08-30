@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
-import Comment from '../components/Comment'
-import CommentInput from "./CommentInput";
+import Comment from './Comment'
+import CommentInput from "../functions/CommentInput";
 
 class CommentBox extends React.Component {
     state = {

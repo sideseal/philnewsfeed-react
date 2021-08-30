@@ -55,7 +55,7 @@ class InputComments extends React.Component {
                             required ref={(input) => this.text = input}>
                             </textarea>
                         <div className="comment__actions">
-                            <button type="submit" onClick={this.handleSubmit}>Post Comment</button>
+                            <button type="submit" >Post Comment</button>
                         </div>
                     </form>
                 </div>

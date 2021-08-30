@@ -1,5 +1,5 @@
 import React from "react";
-import CommentBox from '../functions/CommentBox';
+import CommentBox from '../components/CommentBox';
 
 class Detail extends React.Component{
     componentDidMount(){
