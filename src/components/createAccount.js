@@ -34,12 +34,12 @@ class createAccount extends React.Component {
                 postInfo()
                 .then(response => {
                     if (response.data.statusCode === 200) {
-                        alert("Create Account Success!");
+                        alert("Create Account Success! Please Login Again.");
                         this.nickname.value = "";
                         this.email.value = "";
                         this.password.value = "";
                         this.check__password.value = "";
-                        this.props.history.push("/login");
+                        this.props.history.push("/");
                     } else {
                         alert(response.data.errorMessage);
                         this.nickname.value = "";
@@ -66,7 +66,7 @@ class createAccount extends React.Component {
     render() {
         return (
             <>
-                <div className="login__form">
+                <div className="create__form">
                     <form onSubmit={this.accountInput}>
                         <input
                         name="nickname"
@@ -88,7 +88,7 @@ class createAccount extends React.Component {
                             placeholder="enter your password again"
                             required ref={(input) => this.check__password = input}>
                         </input><br></br>
-                        <div className="login__action">
+                        <div className="create__action">
                             <button type="submit">Create Account</button>
                         </div>
                     </form>
