@@ -29,10 +29,10 @@ class InputComments extends React.Component {
         }
 
         axios.post('https://t4lqrwfmpl.execute-api.ap-northeast-2.amazonaws.com/default/inputComment', { ...comment })
-            // .then(res => {
-            //     console.log(res);
-            //     console.log(res.data);
-            // })
+        .then(res => {
+            console.log(res);
+            console.log(res.data);
+        })
 
         this.props.getInput(comment);
         this.name.value = "";

@@ -1,7 +1,11 @@
 import React from "react";
 import axios from "axios";
+import { Redirect } from 'react-router-dom';
 
 class CheckLogin extends React.Component {
+    state = {
+        redirect: false
+    }
     checkUser = event => {
         event.preventDefault();
 
@@ -28,7 +32,27 @@ class CheckLogin extends React.Component {
                     const result = bcrypt.compareSync(password, userPassword)
                     if (result === true) {
                         alert("Login Success! Welcome to PhillNewsFeed!")
-                        this.props.data.history.push("/");
+
+                        const jwt = require("jsonwebtoken")
+                        const SECRET_TOKEN = userInfo.SECRET_TOKEN;
+                        const token = jwt.sign({ id: userInfo.id, nickname: userInfo.nickname}, SECRET_TOKEN, {expiresIn: "2d"});
+                        const postUserToken = {
+                            'id': userInfo.id,
+                            'nickname': userInfo.nickname,
+                            'token': token
+                        }
+                        axios.post('https://mupq91eq93.execute-api.ap-northeast-2.amazonaws.com/default/userPostToken', {...postUserToken})
+                        .then(resp => {
+                            // onLoginSuccess(resp);
+                            const accessToken = resp.data.body;
+                            axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+
+                            this.setState({ redirect: true });
+                        }).catch(error => {
+                            console.error(error);
+                        })
+
+                        // this.props.data.history.push("/");
                     } else {
                         alert("The Password is Different")
                         this.email.value = "";
@@ -41,7 +65,8 @@ class CheckLogin extends React.Component {
                 }
             })
             .catch(error => {
-                console.log(error)
+                alert(error.message);
+                console.log(error);
             })
         }
 
@@ -49,6 +74,10 @@ class CheckLogin extends React.Component {
     }
 
     render() {
+        const { redirect } = this.state;
+        if (redirect) {
+            return <Redirect to='/' />
+        }
         return (
             <>
                 <div className="login__form">

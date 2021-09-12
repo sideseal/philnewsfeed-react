@@ -39,7 +39,7 @@ class createAccount extends React.Component {
                         this.email.value = "";
                         this.password.value = "";
                         this.check__password.value = "";
-                        this.props.history.push("/");
+                        this.props.history.push("/login");
                     } else {
                         alert(response.data.errorMessage);
                         this.nickname.value = "";

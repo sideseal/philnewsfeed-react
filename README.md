@@ -8,6 +8,7 @@ init: nodejs, npm, npx, git
 3. axios
 4. react-router-dom
 5. bcryptjs
+6. jsonwebtoken
 
 to-do list
 * [x] comment 정렬 (등록순)
@@ -16,3 +17,5 @@ to-do list
 * [ ] pagination 기능 추가
 * [ ] 유저 인증!!!!
 * [ ] comment ID 수정!
+* [ ] ID, Password 입력값 제한
+* [ ] env key more safe...

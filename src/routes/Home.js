@@ -9,10 +9,13 @@ class Home extends React.Component {
     };
 
     getArticles = async () => {
-        const { data: { body } } = await axios.get("https://vvoary23fi.execute-api.ap-northeast-2.amazonaws.com/default/getPhilArticle");
-        const articles = body
-        const sortedArticles = articles.sort((a,b) => new Date(b.published) - new Date(a.published));
-        this.setState({ articles: sortedArticles, isLoading: false })
+        await axios.get("https://vvoary23fi.execute-api.ap-northeast-2.amazonaws.com/default/getPhilArticle")
+        .then(resp => {
+            console.log(resp);
+            const articles = resp.data.body;
+            const sortedArticles = articles.sort((a, b) => new Date(b.published) - new Date(a.published));
+            this.setState({ articles: sortedArticles, isLoading: false })
+        });
     };
 
     componentDidMount() {
