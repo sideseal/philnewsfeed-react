@@ -15,7 +15,7 @@ to-do list
 * [x] article 정렬 (시간순)
 * [x] comment 유무 표시? (개수 표시?)
 * [ ] pagination 기능 추가
-* [ ] 유저 인증!!!!
+* [x] 유저 인증!!!!
 * [ ] comment ID 수정!
 * [ ] ID, Password 입력값 제한
-* [ ] env key more safe...
+* [x] env secret key more safe...

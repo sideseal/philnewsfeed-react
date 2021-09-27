@@ -4,8 +4,9 @@ import { Redirect } from 'react-router-dom';
 
 class CheckLogin extends React.Component {
     state = {
-        redirect: false
+        onLogin: false,
     }
+
     checkUser = event => {
         event.preventDefault();
 
@@ -25,13 +26,14 @@ class CheckLogin extends React.Component {
             .then(response => {
                 if (response.data.statusCode === 200) {
                     const userInfo = response.data.body[0]
+
                     const password = this.password.value
                     const userPassword = userInfo.password
 
                     const bcrypt = require('bcryptjs')
                     const result = bcrypt.compareSync(password, userPassword)
+
                     if (result === true) {
-                        alert("Login Success! Welcome to PhillNewsFeed!")
 
                         const jwt = require("jsonwebtoken")
                         const SECRET_TOKEN = userInfo.SECRET_TOKEN;
@@ -47,7 +49,14 @@ class CheckLogin extends React.Component {
                             const accessToken = resp.data.body;
                             axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
 
-                            this.setState({ redirect: true });
+                            window.localStorage.setItem("token", accessToken)
+
+                            alert("Login Success! Welcome to PhillNewsFeed!")
+                            this.setState({ 
+                                onLogin: true,
+                             });
+                            
+                            
                         }).catch(error => {
                             console.error(error);
                         })
@@ -74,8 +83,8 @@ class CheckLogin extends React.Component {
     }
 
     render() {
-        const { redirect } = this.state;
-        if (redirect) {
+        const { onLogin } = this.state;
+        if (onLogin) {
             return <Redirect to='/' />
         }
         return (
