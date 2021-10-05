@@ -2,8 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import Article from '../components/Article/Article';
 import CheckToken from '../functions/CheckToken';
-import Navigation from '../components/Navigation/Navigation';
-
+import HomeNavigation from '../components/Navigation/HomeNavigation';
 
 class Home extends React.Component {
     state = {
@@ -15,6 +14,7 @@ class Home extends React.Component {
     getArticles = async () => {
         await axios.get("https://vvoary23fi.execute-api.ap-northeast-2.amazonaws.com/default/getPhilArticle")
         .then(resp => {
+            CheckToken(resp);
             const articles = resp.data.body;
             const sortedArticles = articles.sort((a, b) => new Date(b.published) - new Date(a.published));
             const nickname = window.localStorage.getItem('nickname')
@@ -23,7 +23,6 @@ class Home extends React.Component {
     };
 
     componentDidMount() {
-        CheckToken();
         this.getArticles();
     }
 
@@ -51,7 +50,7 @@ class Home extends React.Component {
                     </div>
                 ) : (
                     <>
-                    <Navigation />
+                    <HomeNavigation />
                     {nickname ? (
                         <div className="nickname">Welcome, {nickname}</div>
                     ) : (

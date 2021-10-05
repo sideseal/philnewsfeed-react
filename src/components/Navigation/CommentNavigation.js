@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Navigation() {
+function HomeNavigation() {
     const login = window.localStorage.getItem('Login')
     const Logout = () => {
         alert("Logout Success! Good Bye!")
@@ -17,7 +17,7 @@ function Navigation() {
                 </div>
             </>
         );
-    } 
+    }
     return (
             <>
                 <div className="nav__Home">
@@ -27,7 +27,7 @@ function Navigation() {
                     <Link to="/login">Login</Link>
                 </div>
             </>
-        );
+    );
 }
 
-export default React.memo(Navigation);
+export default HomeNavigation;

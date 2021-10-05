@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import Comment from './Comment'
 import CommentInput from "./CommentInput";
+import CheckToken from "../../functions/CheckToken";
 
 class CommentBox extends React.Component {
     state = {
@@ -17,9 +18,12 @@ class CommentBox extends React.Component {
 
     getComments = async () => {
         const articleId = this.props.data.state.id
-        const { data: { body } } = await axios.get("https://iknsm5uz03.execute-api.ap-northeast-2.amazonaws.com/default/getComments", { params: { article_id: articleId } });
-        const comments = body
-        this.setState({ comments, isLoading: false })
+        await axios.get("https://iknsm5uz03.execute-api.ap-northeast-2.amazonaws.com/default/getComments", { params: { article_id: articleId } })
+        .then(resp => {
+            CheckToken(resp);
+            const comments = resp.data.body;
+            this.setState({ comments, isLoading: false })
+        })
     };
 
     componentDidMount() {
@@ -40,7 +44,7 @@ class CommentBox extends React.Component {
     }
 
     render() {
-        const {isLoading, comments } = this.state;
+        const { isLoading, comments } = this.state;
         const data = this.props.data.state.id;
         return (
             <section className="container">

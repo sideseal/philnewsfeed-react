@@ -49,8 +49,6 @@ class CheckLogin extends React.Component {
                             const accessToken = resp.data.body;
                             axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
 
-                            window.localStorage.setItem("token", accessToken)
-
                             alert("Login Success! Welcome to PhillNewsFeed!")
                             this.setState({ 
                                 onLogin: true,
