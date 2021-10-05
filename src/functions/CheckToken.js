@@ -12,6 +12,7 @@ async function CheckToken(){
             if (!err) {
                 const nickname = decoded.nickname;
                 window.localStorage.setItem('nickname',nickname)
+                window.localStorage.setItem('Login', true)
             } else {
                 alert(err);
                 console.log(err);

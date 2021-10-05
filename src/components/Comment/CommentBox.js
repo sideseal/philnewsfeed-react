@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import Comment from './Comment'
-import CommentInput from "../functions/CommentInput";
+import CommentInput from "./CommentInput";
 
 class CommentBox extends React.Component {
     state = {
@@ -26,6 +26,9 @@ class CommentBox extends React.Component {
         this.getComments();
     }
     
+    componentWillUnmount() {
+    }
+
     getCommentsCount(commentCount) {
         if (commentCount === 0) {
             return 'No comments yet';

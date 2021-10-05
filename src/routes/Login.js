@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import CheckLogin from '../components/CheckLogin'
+import CheckLogin from '../components/Login/CheckLogin'
 
 class Login extends React.Component {
     render() {

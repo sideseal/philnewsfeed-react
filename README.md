@@ -15,6 +15,7 @@ to-do list
 * [x] article 정렬 (시간순)
 * [x] comment 유무 표시? (개수 표시?)
 * [ ] pagination 기능 추가
+* [ ] jwt 토큰 저장 방식 고민
 * [x] 유저 인증!!!!
 * [ ] comment ID 수정!
 * [ ] ID, Password 입력값 제한

@@ -1,5 +1,5 @@
 import React from "react";
-import CreateAccount from "../components/createAccount";
+import CreateAccount from "../components/Login/CreateAccount";
 
 class Registration extends React.Component{
     render() {

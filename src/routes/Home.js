@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import Article from '../components/Article';
+import Article from '../components/Article/Article';
 import CheckToken from '../functions/CheckToken';
 
 class Home extends React.Component {
@@ -20,34 +20,26 @@ class Home extends React.Component {
         });
     };
 
-    // checkToken = async (info,...props) => {
-    //     const token = info.config.headers.Authorization;
-    //     console.log(props[0])
-    //     if (token) {
-    //         await axios.get("https://7c42fzd3b1.execute-api.ap-northeast-2.amazonaws.com/default/checkToken", { params: { token: token } })
-    //         .then(resp => {
-    //             const jwt = require("jsonwebtoken");
-    //             const secret = resp.data.body;
-    //             jwt.verify(token, secret, function (err, decoded) {
-    //                 if (err) {
-    //                     alert(err);
-    //                     console.log(err);
-    //                 } else {
-    //                     const nickname = decoded.nickname;
-    //                     console.log(nickname);
-    //                     props[0].setState({ nickname: nickname })
-    //                 }
-    //             })    
-    //         })
-    //     }
-    // }
-
-
-  
-
     componentDidMount() {
+        const { history, location } = this.props;
+        console.log(history, location.state)
         CheckToken();
         this.getArticles();
+
+    }
+
+    // shouldComponentUpdate(nextProps, nextState) {
+    //     const vitalPropsChange = this.props !== nextProps;
+    //     const vitalStateChange = this.state !== nextState;
+    //     return vitalPropsChange || vitalStateChange;
+    // }
+    
+    componentDidCatch(error, info) {
+        console.error(error, info);
+        alert(error, info);
+    }
+
+    componentWillUnmount() {
     }
 
     render() {
