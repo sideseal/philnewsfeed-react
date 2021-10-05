@@ -1,6 +1,6 @@
 import axios from "axios";
 
-async function CheckToken(){
+async function CheckToken() {
     const token = window.localStorage.getItem('token');
     if (token) {
         const queryToken = token.split('.')[0];

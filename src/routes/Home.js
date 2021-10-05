@@ -2,6 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import Article from '../components/Article/Article';
 import CheckToken from '../functions/CheckToken';
+import Navigation from '../components/Navigation/Navigation';
+
 
 class Home extends React.Component {
     state = {
@@ -21,11 +23,8 @@ class Home extends React.Component {
     };
 
     componentDidMount() {
-        const { history, location } = this.props;
-        console.log(history, location.state)
         CheckToken();
         this.getArticles();
-
     }
 
     // shouldComponentUpdate(nextProps, nextState) {
@@ -52,6 +51,7 @@ class Home extends React.Component {
                     </div>
                 ) : (
                     <>
+                    <Navigation />
                     {nickname ? (
                         <div className="nickname">Welcome, {nickname}</div>
                     ) : (

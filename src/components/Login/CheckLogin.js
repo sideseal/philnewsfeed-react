@@ -82,6 +82,9 @@ class CheckLogin extends React.Component {
         checkLogin();
     }
 
+    componentWillUnmount(){
+    }
+
     render() {
         const { onLogin } = this.state;
         if (onLogin) {
