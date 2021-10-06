@@ -17,7 +17,9 @@ to-do list
 * [ ] pagination 기능 추가
 * [x] jwt 토큰 저장 방식 고민
 * [x] 유저 인증!!!!
-* [ ] comment ID 수정!
+* [x] comment ID 수정!
+* [x] 회원만 댓글달 수 있게 하기
 * [ ] ID, Password 입력값 제한
 * [x] env secret key more safe...
 * [ ] 기사 내에서 로그인 시 잘 안되는 버그...
+* [ ] 가끔씩 로딩이 엄청 오래 걸리는 이유는 무엇일까?

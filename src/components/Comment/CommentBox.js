@@ -8,6 +8,7 @@ class CommentBox extends React.Component {
     state = {
         isLoading: true,
         comments: [],
+        apiResponse: null
     };
 
     getInput = (data) => {
@@ -22,7 +23,7 @@ class CommentBox extends React.Component {
         .then(resp => {
             CheckToken(resp);
             const comments = resp.data.body;
-            this.setState({ comments, isLoading: false })
+            this.setState({ comments, isLoading: false, apiResponse: resp })
         })
     };
 
@@ -44,7 +45,7 @@ class CommentBox extends React.Component {
     }
 
     render() {
-        const { isLoading, comments } = this.state;
+        const { isLoading, comments, apiResponse } = this.state;
         const data = this.props.data.state.id;
         return (
             <section className="container">
@@ -55,7 +56,7 @@ class CommentBox extends React.Component {
                 ) : (
                     <>
                     <div className="comment__input">
-                        <CommentInput data={data} getInput={this.getInput} />
+                        <CommentInput data={data} resp={apiResponse} getInput={this.getInput} />
                     </div>
                     <h4>
                         {this.getCommentsCount(comments.length)}
