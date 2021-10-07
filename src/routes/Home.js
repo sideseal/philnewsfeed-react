@@ -14,7 +14,7 @@ class Home extends React.Component {
     getArticles = async () => {
         await axios.get("https://vvoary23fi.execute-api.ap-northeast-2.amazonaws.com/default/getPhilArticle")
         .then(resp => {
-            CheckToken(resp.config.headers.Authorization);
+            // CheckToken(resp.config.headers.Authorization);
             const articles = resp.data.body;
             const sortedArticles = articles.sort((a, b) => new Date(b.published) - new Date(a.published));
             const nickname = window.localStorage.getItem('nickname')
@@ -24,6 +24,8 @@ class Home extends React.Component {
 
     componentDidMount() {
         this.getArticles();
+        const token = window.localStorage.getItem('Token');
+        CheckToken(token);
     }
 
     // shouldComponentUpdate(nextProps, nextState) {

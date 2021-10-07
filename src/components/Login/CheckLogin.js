@@ -46,23 +46,23 @@ class CheckLogin extends React.Component {
                         }
                         axios.post('https://mupq91eq93.execute-api.ap-northeast-2.amazonaws.com/default/userPostToken', {...postUserToken})
                         .then(resp => {
-                            // onLoginSuccess(resp);
                             const accessToken = resp.data.body;
                             axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
 
+                            // 임시로 토큰 유지하기 위해 로컬스토리지에 토큰을 저장함.
+                            const bearerToken = 'Bearer ' + accessToken
+                            window.localStorage.setItem('Token', bearerToken)
 
+                            CheckToken(bearerToken);
                             alert("Login Success! Welcome to PhillNewsFeed!")
-                            CheckToken('Bearer ' + accessToken);
-
+                            
                             this.setState({ 
                                 onLogin: true,
                             });
-                            
                         }).catch(error => {
                             console.error(error);
                         })
 
-                        // this.props.data.history.push("/");
                     } else {
                         alert("The Password is Different")
                         this.email.value = "";
