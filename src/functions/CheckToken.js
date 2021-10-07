@@ -1,7 +1,7 @@
 import axios from "axios";
 
 async function CheckToken(resp) {
-    const tokenCheck = resp.config.headers.Authorization
+    const tokenCheck = resp
     if (tokenCheck) {
         const token = tokenCheck.split(' ')[1];
         const queryToken = token.split('.')[0];
@@ -18,7 +18,8 @@ async function CheckToken(resp) {
                 alert(err);
                 console.log(err);
                 window.localStorage.clear();
-                // 홈페이지로 가는 기능 추가해야함!
+                delete axios.defaults.headers.common['Authorization'];
+                window.location.replace("/");
             }
         })
     }

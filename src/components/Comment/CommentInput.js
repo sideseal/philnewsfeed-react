@@ -1,6 +1,5 @@
 import React from "react";
 import axios from "axios";
-import CheckToken from "../../functions/CheckToken";
 
 function getFormatDate(date) {
     var year = date.getFullYear();
@@ -33,8 +32,6 @@ function makeId(date) {
 class InputComments extends React.Component {
     inputComment = async event => {
         event.preventDefault();
-        const resp = this.props.resp;
-        CheckToken(resp);
         const checkLogin = window.localStorage.getItem('Login')
 
         if (checkLogin) {

@@ -19,7 +19,8 @@ to-do list
 * [x] 유저 인증!!!!
 * [x] comment ID 수정!
 * [x] 회원만 댓글달 수 있게 하기
-* [ ] ID, Password 입력값 제한
+* [x] ID, Password 입력값 제한
 * [x] env secret key more safe...
 * [ ] 기사 내에서 로그인 시 잘 안되는 버그...
 * [ ] 가끔씩 로딩이 엄청 오래 걸리는 이유는 무엇일까?
+* [ ] tag 기능 추가

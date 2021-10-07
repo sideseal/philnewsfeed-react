@@ -68,22 +68,25 @@ class createAccount extends React.Component {
             <>
                 <div className="create__form">
                     <form onSubmit={this.accountInput}>
-                        <input
+                        <div className="nickname__info">
+                            Nickname should be at least 2 characters to at most 10 characters.
+                        </div>
+                        <input className="nickname__form"
                         name="nickname"
                         placeholder="enter your nickname"
                         required ref={(input) => this.nickname = input}>
                         </input><br></br>
-                        <input
+                        <input className="email__form"
                             name="email"
                             placeholder="enter your email"
                             required ref={(input) => this.email = input}>
                         </input><br></br>
-                        <input
+                        <input className="password__form"
                             name="password"
                             placeholder="enter your password"
                             required ref={(input) => this.password = input}>
                         </input><br></br>
-                        <input
+                        <input className="check__password__form"
                             name="check__password"
                             placeholder="enter your password again"
                             required ref={(input) => this.check__password = input}>

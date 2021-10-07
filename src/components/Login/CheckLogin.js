@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
-import { Redirect } from 'react-router-dom';
+import { Redirect } from "react-router";
+import CheckToken from "../../functions/CheckToken";
 
 class CheckLogin extends React.Component {
     state = {
@@ -37,7 +38,7 @@ class CheckLogin extends React.Component {
 
                         const jwt = require("jsonwebtoken")
                         const SECRET_TOKEN = userInfo.SECRET_TOKEN;
-                        const token = jwt.sign({ id: userInfo.id, nickname: userInfo.nickname}, SECRET_TOKEN, {expiresIn: "2d"});
+                        const token = jwt.sign({ id: userInfo.id, nickname: userInfo.nickname}, SECRET_TOKEN, {expiresIn: "1d"});
                         const postUserToken = {
                             'id': userInfo.id,
                             'nickname': userInfo.nickname,
@@ -49,11 +50,13 @@ class CheckLogin extends React.Component {
                             const accessToken = resp.data.body;
                             axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
 
+
                             alert("Login Success! Welcome to PhillNewsFeed!")
+                            CheckToken('Bearer ' + accessToken);
+
                             this.setState({ 
                                 onLogin: true,
-                             });
-                            
+                            });
                             
                         }).catch(error => {
                             console.error(error);
@@ -86,7 +89,7 @@ class CheckLogin extends React.Component {
     render() {
         const { onLogin } = this.state;
         if (onLogin) {
-            return <Redirect to='/' />
+            return <Redirect to="/" />
         }
         return (
             <>

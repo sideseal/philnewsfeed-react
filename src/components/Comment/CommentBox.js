@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import Comment from './Comment'
 import CommentInput from "./CommentInput";
-import CheckToken from "../../functions/CheckToken";
+
 
 class CommentBox extends React.Component {
     state = {
@@ -21,7 +21,6 @@ class CommentBox extends React.Component {
         const articleId = this.props.data.state.id
         await axios.get("https://iknsm5uz03.execute-api.ap-northeast-2.amazonaws.com/default/getComments", { params: { article_id: articleId } })
         .then(resp => {
-            CheckToken(resp);
             const comments = resp.data.body;
             this.setState({ comments, isLoading: false, apiResponse: resp })
         })
