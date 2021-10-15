@@ -1,13 +1,18 @@
 import React from "react";
 import axios from "axios";
-import { Redirect } from "react-router";
+import { withRouter } from "react-router";
+import { cacheAdapterEnhancer } from 'axios-extensions';
 import CheckToken from "../../functions/CheckToken";
 
-class CheckLogin extends React.Component {
-    state = {
-        onLogin: false,
-    }
 
+const instance = axios.create({
+    baseURL: '/',
+    adapter: cacheAdapterEnhancer(axios.defaults.adapter,
+        { enabledByDefault: false }),
+})
+
+
+class CheckLogin extends React.Component {
     checkUser = event => {
         event.preventDefault();
 
@@ -15,7 +20,7 @@ class CheckLogin extends React.Component {
 
         const loginInfo = async () => {
             try {
-                return axios.get('https://lia1dk4nze.execute-api.ap-northeast-2.amazonaws.com/default/userCheckLogin', {params: { email: email }});
+                return instance.get('https://lia1dk4nze.execute-api.ap-northeast-2.amazonaws.com/default/userCheckLogin', {params: { email: email }});
             } catch (error) {
                 alert(error.message);
                 console.error(error);
@@ -55,10 +60,13 @@ class CheckLogin extends React.Component {
 
                             CheckToken(bearerToken);
                             alert("Login Success! Welcome to PhillNewsFeed!")
+
+                            this.props.history.push("/")
+
+                            // 임시방편으로...
+                            return window.location.reload();
                             
-                            this.setState({ 
-                                onLogin: true,
-                            });
+
                         }).catch(error => {
                             console.error(error);
                         })
@@ -87,10 +95,6 @@ class CheckLogin extends React.Component {
     }
 
     render() {
-        const { onLogin } = this.state;
-        if (onLogin) {
-            return <Redirect to="/" />
-        }
         return (
             <>
                 <div className="login__form">
@@ -115,4 +119,4 @@ class CheckLogin extends React.Component {
     }
 }
 
-export default CheckLogin;
+export default withRouter(CheckLogin);

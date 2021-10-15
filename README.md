@@ -9,6 +9,7 @@ init: nodejs, npm, npx, git
 4. react-router-dom
 5. bcryptjs
 6. jsonwebtoken
+7. axios-extensions
 
 to-do list
 * [x] comment 정렬 (등록순)
@@ -21,6 +22,7 @@ to-do list
 * [x] 회원만 댓글달 수 있게 하기
 * [x] ID, Password 입력값 제한
 * [x] env secret key more safe...
-* [ ] 기사 내에서 로그인 시 잘 안되는 버그...
-* [ ] 가끔씩 로딩이 엄청 오래 걸리는 이유는 무엇일까?
+* [x] 기사 내에서 로그인 시 잘 안되는 버그...
+* [x] 가끔씩 로딩이 엄청 오래 걸리는 이유는 무엇일까?
 * [ ] tag 기능 추가
+* [ ] comment 같은 변경 사항 즉각 반영

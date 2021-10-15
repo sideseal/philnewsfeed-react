@@ -1,8 +1,17 @@
 import React from 'react';
 import axios from 'axios';
+import { cacheAdapterEnhancer } from 'axios-extensions';
 import Article from '../components/Article/Article';
 import CheckToken from '../functions/CheckToken';
 import HomeNavigation from '../components/Navigation/HomeNavigation';
+
+
+const instance = axios.create({
+    baseURL: '/',
+    adapter: cacheAdapterEnhancer(axios.defaults.adapter,
+        {enabledByDefault: false}),
+})
+
 
 class Home extends React.Component {
     state = {
@@ -12,7 +21,8 @@ class Home extends React.Component {
     };
 
     getArticles = async () => {
-        await axios.get("https://vvoary23fi.execute-api.ap-northeast-2.amazonaws.com/default/getPhilArticle")
+        await instance.get("https://vvoary23fi.execute-api.ap-northeast-2.amazonaws.com/default/getPhilArticle",
+        { forceUpdate: this.props.history.action === 'POP', cache: true})
         .then(resp => {
             // CheckToken(resp.config.headers.Authorization);
             const articles = resp.data.body;
