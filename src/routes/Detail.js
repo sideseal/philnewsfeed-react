@@ -11,11 +11,14 @@ class Detail extends React.Component{
     }
 
     componentWillUnmount(){
-        const {history} = this.props;
-        history.push("/");
+        let page = Number(window.sessionStorage.getItem('currentPage'));
+        window.sessionStorage.setItem('currentPage', page+1);
+        this.props.history.push({
+            pathname: `/page/${page + 1}`,
+        });
     }
 
-    render(){
+    render() {
         const { location } = this.props;
         const data = this.props.location;
         return (

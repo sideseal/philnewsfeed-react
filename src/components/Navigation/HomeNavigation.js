@@ -1,5 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+
 
 function HomeNavigation() {
     const login = window.localStorage.getItem('Login')
@@ -10,10 +11,10 @@ function HomeNavigation() {
         return (
             <>
                 <div className="nav__Home">
-                    <Link to="/">Home</Link>
+                    <NavLink to="/">Home</NavLink>
                 </div>
                 <div className="nav__Logout">
-                    <Link to="/logout" onClick={Logout}>Logout</Link>
+                    <NavLink to="/logout" onClick={Logout}>Logout</NavLink>
                 </div>
             </>
         );
@@ -21,10 +22,10 @@ function HomeNavigation() {
     return (
             <>
                 <div className="nav__Home">
-                    <Link to="/">Home</Link>
+                    <NavLink to="/">Home</NavLink>
                 </div>
                 <div className="nav__Login">
-                    <Link to="/login">Login</Link>
+                    <NavLink activeClassName="active" to="/login">Login</NavLink>
                 </div>
             </>
         );
