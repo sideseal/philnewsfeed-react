@@ -1,4 +1,5 @@
 import React from "react";
+import { Redirect } from "react-router";
 import CommentBox from '../components/Comment/CommentBox';
 import CommentNavigation from '../components/Navigation/CommentNavigation'
 
@@ -12,10 +13,8 @@ class Detail extends React.Component {
 
     componentWillUnmount() {
         let page = Number(window.sessionStorage.getItem('currentPage'));
-        window.sessionStorage.setItem('currentPage', page + 1);
-        this.props.history.push({
-            pathname: `/page/${page + 1}`,
-        });
+        window.sessionStorage.setItem('currentPage', page+1);
+        return <Redirect push to={`/page/${page+1}`} />
     }
 
     render() {

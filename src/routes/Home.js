@@ -53,7 +53,11 @@ class Home extends React.Component {
                 const nickname = window.localStorage.getItem('nickname')
                 this.setState({ articles: articles, isLoading: false, nickname: nickname });
             });
-        window.sessionStorage.setItem('currentPage', 1);
+        
+        let val = window.sessionStorage.getItem('currentPage')
+        if (!val) {
+            window.sessionStorage.setItem('currentPage', 1);
+        }
     };
 
     handlePageClick = (event) => {
