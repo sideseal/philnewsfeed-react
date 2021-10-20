@@ -11,7 +11,7 @@ import HomeNavigation from '../components/Navigation/HomeNavigation';
 const instance = axios.create({
     baseURL: '/',
     adapter: cacheAdapterEnhancer(axios.defaults.adapter,
-        {enabledByDefault: false}),
+        { enabledByDefault: false }),
 })
 
 
@@ -32,7 +32,7 @@ class Home extends React.Component {
 
     componentWillUnmount() {
         // 임시방편으로... 
-        this.setState = (state,callback) => {
+        this.setState = (state, callback) => {
             return;
         };
     }
@@ -77,32 +77,32 @@ class Home extends React.Component {
             // this.props.history.push({
             //     pathname: `/page/${val-1}`
             // });
-            return <Redirect push to={`/page/${val-1}`} />
+            return <Redirect push to={`/page/${val - 1}`} />
         }
 
         if (Number(window.sessionStorage.getItem('currentPage')) <= 0) {
-            window.sessionStorage.setItem('currentPage',1);
+            window.sessionStorage.setItem('currentPage', 1);
             window.location.reload();
         }
 
-        const currentPage  = Number(window.sessionStorage.getItem('currentPage'))
+        const currentPage = Number(window.sessionStorage.getItem('currentPage'))
         const perPage = 10;
         const indexOfLast = currentPage * perPage;
         const indexOfFirst = indexOfLast - perPage;
         const currentArticles = articles.slice(indexOfFirst, indexOfLast);
 
         const renderArticles = currentArticles.map(article => {
-           return <Article 
-                key={article.id} 
-                id={article.id} 
-                name={article.name} 
-                title={article.title} 
-                published={article.published} 
-                link={article.link} 
+            return <Article
+                key={article.id}
+                id={article.id}
+                name={article.name}
+                title={article.title}
+                published={article.published}
+                link={article.link}
                 comments={article.comments}
-            /> 
+            />
         })
-        
+
         // const pageNumbers = [];
         // for (let i = 1; i <= Math.ceil(articles.length / perPage); i++) {
         //     pageNumbers.push(i);
@@ -128,29 +128,29 @@ class Home extends React.Component {
                     </div>
                 ) : (
                     <>
-                    <HomeNavigation />
-                    {nickname ? (
-                        <div className="nickname">Welcome, {nickname}</div>
-                    ) : (
-                        <div className="nickname">Please Login</div>
-                    )}
-                    <div className="articles">
-                        {renderArticles}
-                        {/* {articles
+                        <HomeNavigation />
+                        {nickname ? (
+                            <div className="nickname">Welcome, {nickname}</div>
+                        ) : (
+                            <div className="nickname">Please Login</div>
+                        )}
+                        <div className="articles">
+                            {renderArticles}
+                            {/* {articles
                         .map(article => (
                             <Article key={article.id} id={article.id} name={article.name} title={article.title} published={article.published} link={article.link} comments={article.comments} />
                         ))} */}
-                    </div>
-                    <div className="pagination">
-                        <Pagination
-                            activePage={currentPage}
-                            itemsCountPerPage={10}
-                            totalItemsCount={articles.length}
-                            pageRangeDisplayed={5}
-                            onChange={this.handlePageClick}
-                        />
-                        {/* {renderPageNumbers} */}
-                    </div>
+                        </div>
+                        <div className="pagination">
+                            <Pagination
+                                activePage={currentPage}
+                                itemsCountPerPage={10}
+                                totalItemsCount={articles.length}
+                                pageRangeDisplayed={5}
+                                onChange={this.handlePageClick}
+                            />
+                            {/* {renderPageNumbers} */}
+                        </div>
                     </>
                 )}
             </section>

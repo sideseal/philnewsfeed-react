@@ -2,17 +2,17 @@ import React from "react";
 import CommentBox from '../components/Comment/CommentBox';
 import CommentNavigation from '../components/Navigation/CommentNavigation'
 
-class Detail extends React.Component{
-    componentDidMount(){
+class Detail extends React.Component {
+    componentDidMount() {
         const { location, history } = this.props;
-        if (location.state === undefined){
+        if (location.state === undefined) {
             history.push("/");
         }
     }
 
-    componentWillUnmount(){
+    componentWillUnmount() {
         let page = Number(window.sessionStorage.getItem('currentPage'));
-        window.sessionStorage.setItem('currentPage', page+1);
+        window.sessionStorage.setItem('currentPage', page + 1);
         this.props.history.push({
             pathname: `/page/${page + 1}`,
         });
@@ -29,7 +29,7 @@ class Detail extends React.Component{
                     <h4>{location.state.name} | {location.state.published}</h4>
                 </div>
                 <div className="comment__box">
-                    <CommentBox data={data}/>
+                    <CommentBox data={data} />
                 </div>
             </>
         );
