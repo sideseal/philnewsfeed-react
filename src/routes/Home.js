@@ -37,6 +37,10 @@ class Home extends React.Component {
         };
     }
 
+    componentDidUpdate(){
+        // console.log('component update')
+    }
+
     componentDidCatch(error, info) {
         console.error(error, info);
         alert(error, info);
