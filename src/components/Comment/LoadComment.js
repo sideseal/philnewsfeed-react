@@ -4,7 +4,7 @@ import Comment from './Comment'
 import CommentInput from "./CommentInput";
 
 
-class CommentBox extends React.Component {
+class LoadComment extends React.Component {
     state = {
         isLoading: true,
         comments: [],
@@ -33,6 +33,9 @@ class CommentBox extends React.Component {
     componentWillUnmount() {
     }
 
+    componentDidUpdate() {
+    }
+
     getCommentsCount(commentCount) {
         if (commentCount === 0) {
             return 'No comments yet';
@@ -44,8 +47,9 @@ class CommentBox extends React.Component {
     }
 
     render() {
-        const { isLoading, comments, apiResponse } = this.state;
+        const { isLoading, comments } = this.state;
         const data = this.props.data.state.id;
+        const checkLogin = window.localStorage.getItem('Login')
         return (
             <section className="container">
                 {isLoading ? (
@@ -54,9 +58,15 @@ class CommentBox extends React.Component {
                     </div>
                 ) : (
                     <>
-                    <div className="comment__input">
-                        <CommentInput data={data} resp={apiResponse} getInput={this.getInput} />
-                    </div>
+                    {checkLogin? (
+                        <div className="comment__input">
+                            <CommentInput data={data} getInput={this.getInput} />
+                        </div>
+                    ) : (
+                        <div className="need__login">
+                            Need login to leave a comment.
+                        </div>
+                    )}
                     <h4>
                         {this.getCommentsCount(comments.length)}
                     </h4>
@@ -66,12 +76,9 @@ class CommentBox extends React.Component {
                         .map((comment, i) => (
                             <Comment 
                             key={i} 
-                            id={comment.id} 
                             name={comment.name} 
-                            articleId={comment.article_id} 
                             date={comment.date} 
-                            text={comment.text}
-                            comment_date={comment.comment_date} />
+                            text={comment.text} />
                         ))}
                     </div>
                     </>
@@ -81,4 +88,4 @@ class CommentBox extends React.Component {
     }
 }
 
-export default CommentBox;
+export default LoadComment;

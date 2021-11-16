@@ -29,4 +29,4 @@ to-do list
 * [ ] comment 같은 변경 사항 즉각 반영
 * [ ] 댓글 불러오기 cold start 해결
 * [ ] loadish나 axios cancel을 이용하여 불필요한 api 콜 줄이기
-* [ ] pagination 기능 조금 더 손보기 (완전하지 않음...)
+* [ ] pagination 기능 조금 더 손보기 (완전하지 않음... 가령 페이지 이동 시 맨 위로 이동하거나... 페이지 url 입력 시 이동되로록 만들거나...)

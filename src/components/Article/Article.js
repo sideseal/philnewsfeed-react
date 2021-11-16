@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 function Article({id,name,title,published,link,comments}){
-
     return (
             <div className="article__data">
                 <h4 className="article__title">
@@ -23,7 +22,7 @@ function Article({id,name,title,published,link,comments}){
                             }
                         }}
                     >
-                    <h5 className="comment__detail">{comments} comments</h5>
+                    <h5 className="article__detail">{comments} comments</h5>
                     </Link>
                 </div>
             <hr></hr>

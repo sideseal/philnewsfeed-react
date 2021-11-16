@@ -59,37 +59,25 @@ class InputComments extends React.Component {
     }
 
     render() {
-        const checkLogin = window.localStorage.getItem('Login')
         const username = window.localStorage.getItem('nickname')
-        if (checkLogin) {
-            return (
-                <>
-                    <div className="comment__form">
-                        <form onSubmit={this.inputComment}>
-                                <div className="comment__username">
-                                    {username}
-                                </div>
-                                <textarea className="comment__text"
-                                name="text" 
-                                placeholder="leave a comment..."
-                                required ref={(input) => this.text = input}>
-                                </textarea>
-                            <div className="comment__actions">
-                                <button type="submit" >Post Comment</button>
-                            </div>
-                        </form>
+        return (
+            <div className="comment__form">
+                <form onSubmit={this.inputComment}>
+                        <div className="comment__username">
+                            {username}
+                        </div>
+                        <textarea className="comment__text"
+                        name="text" 
+                        placeholder="leave a comment..."
+                        required ref={(input) => this.text = input}>
+                        </textarea>
+                    <div className="comment__actions">
+                        <button type="submit" >Post Comment</button>
                     </div>
-                </>
-            );
-        } else {
-            return (
-            <div className="need__login">
-                Need login to leave a comment.
+                </form>
             </div>
-            );
-        }
-    }
-
+        );
+    } 
 }
 
 export default InputComments;
