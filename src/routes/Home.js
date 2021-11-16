@@ -72,7 +72,7 @@ class Home extends React.Component {
                         )}
                         <div className="articles">
                             {articles.map(article => (
-                                <Article key={article.id} id={article.id} name={article.name} title={article.title} published={article.published} link={article.link} comments={article.comments} />
+                                <Article key={article.id} id={article.id} name={article.name} title={article.title} published={article.published} link={article.link} comments={article.comments} tags={article.tags} />
                             ))}
                         </div>
                     </>

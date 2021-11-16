@@ -25,8 +25,8 @@ to-do list
 * [x] env secret key more safe...
 * [x] 기사 내에서 로그인 시 잘 안되는 버그...
 * [x] 가끔씩 로딩이 엄청 오래 걸리는 이유는 무엇일까?
-* [ ] tag 기능 추가
-* [ ] comment 같은 변경 사항 즉각 반영
-* [ ] 댓글 불러오기 cold start 해결
+* [x] tag 기능 추가
+* [x] comment 같은 변경 사항 즉각 반영
+* [x] 댓글 불러오기 cold start 해결
 * [ ] loadish나 axios cancel을 이용하여 불필요한 api 콜 줄이기
 * [ ] pagination 기능 조금 더 손보기 (완전하지 않음... 가령 페이지 이동 시 맨 위로 이동하거나... 페이지 url 입력 시 이동되로록 만들거나...)
