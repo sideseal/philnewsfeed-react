@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-function Article({id,name,title,published,link,comments,tags}){
+function Article({page,id,name,title,published,link,comments,tags}){
     return (
             <div className="article__data">
                 <h4 className="article__title">
@@ -11,8 +11,9 @@ function Article({id,name,title,published,link,comments,tags}){
                 <div className="article__comment">
                     <Link
                         to={{
-                            pathname: `/article/${id}`,
+                            pathname: `/${page}/article/${id}`,
                             state: {
+                                page: page,
                                 id: id,
                                 name: name,
                                 title: title,
@@ -31,13 +32,14 @@ function Article({id,name,title,published,link,comments,tags}){
 }
 
 Article.propTypes = {
+    page: PropTypes.number.isRequired,
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     published: PropTypes.string.isRequired,
     link: PropTypes.string.isRequired,
     comments: PropTypes.number.isRequired,
-    tags: PropTypes.number.isRequired,
+    tags: PropTypes.string.isRequired,
 };
 
 export default Article;
