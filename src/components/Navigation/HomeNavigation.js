@@ -9,7 +9,7 @@ function HomeNavigation(data) {
         alert("Logout Success! Good Bye!")
     }
     const pageChange = () => {
-        data.props.history.push(`/1`);
+        data.props.history.push(`/`);
         window.location.reload();
     }
     if (login) {

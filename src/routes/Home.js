@@ -3,6 +3,7 @@ import axios from 'axios';
 import { cacheAdapterEnhancer } from 'axios-extensions';
 import Pagination from 'react-js-pagination';
 // import Article from '../components/Article/Article';
+import '../index.css'
 import Pages from '../components/Article/Pages';
 import CheckToken from '../functions/CheckToken';
 import HomeNavigation from '../components/Navigation/HomeNavigation';
@@ -23,17 +24,17 @@ class Home extends React.Component {
     };
 
     componentDidMount() {
-        this.getArticles();
-        this.checkUrlPage();
-        CheckToken();
-        window.onpopstate = () => {
-            const matchParams = this.props.match.params.page;
-            if (matchParams === undefined){
-                this.setState({currentPage: 1});
-            } else {
-                this.onChangePage(parseInt(matchParams));
-            };
-        };
+        // this.getArticles();
+        // this.checkUrlPage();
+        // CheckToken();
+        // window.onpopstate = () => {
+        //     const matchParams = this.props.match.params.page;
+        //     if (matchParams === undefined){
+        //         this.setState({currentPage: 1});
+        //     } else {
+        //         this.onChangePage(parseInt(matchParams));
+        //     };
+        // };
     }
 
     onChangePage = currentPage => {
@@ -130,7 +131,7 @@ class Home extends React.Component {
                             {renderPageNumbers}
                         </ul> */}
                         <div>
-                            <Pagination
+                            <Pagination className="pagination"
                                 activePage={this.state.currentPage}
                                 itemsCountPerPage={10}
                                 totalItemsCount={articles.length}

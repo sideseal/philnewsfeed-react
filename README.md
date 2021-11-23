@@ -11,6 +11,10 @@ init: nodejs, npm, npx, git
 6. jsonwebtoken
 7. axios-extensions
 8. react-js-pagination
+9-1. tailwindcss
+9-2. postcss
+9-3. autoprefixer
+9-4. craco
 
 to-do list
 * [x] comment 정렬 (등록순)

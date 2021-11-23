@@ -4,7 +4,9 @@
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
     <meta
       name="description"
       content="Web site created using create-react-app"
@@ -27,9 +29,22 @@
     <title>Phillib</title>
   </head>
   <body>
-    <header>
-      <h1><a href="/">Phillib! 0.3v</a></h1>
-      <h3>A service to aggregate all your favorite philosophy news</h3>
+    <header class="top-0 fixed w-full bg-red-600">
+      <div class="inline-flex">
+        <p
+          class="h-24 static mb-2 ml-2
+          text-8xl text-left font-semibold leading-tight text-yellow-300 italic 
+          ">
+          PHILLIB!
+        </p>
+        <p
+        class="static ml-5 mt-11 hidden md:block 
+        text-2xl uppercase whitespace-nowrap font-normal leading-none text-yellow-300
+        ">
+          A service to aggregate - <br>
+          all your favorite philosophy news
+        </p>
+      </div>
     </header>
     <div id="root"></div>
     <!--
