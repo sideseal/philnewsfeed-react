@@ -12,7 +12,7 @@ class Login extends React.Component {
                 <CheckLogin data={data}/>
             </div>
             <div className="register__page">
-                <Link to="/register">Create Account</Link>
+                <Link to="/setting/login/register">Create Account</Link>
             </div>
         </>
         );

@@ -20,12 +20,12 @@ function App(){
       </header> */}
       <Switch>
         <Suspense fallback="Please wait...">
-          {/* <Route path="/" exact={true} render={() => (<Redirect to="/1" />)} /> */}
           <Route exact path={["/", "/:page"]} component={Home} />
+          <Route exact path="/setting/login" component={Login} />
+          <Route path="/setting/login/register" component={Registration} />
           <Route path="/:page/article/:id" component={ArticleDetail} />
-          <Route path="/register" component={Registration} />
-          <Route path="/login" component={Login} />
-          <Route path="/logout" component={Logout} />
+          <Route path="/setting/logout" component={Logout} />
+          {/* <Route path="/" exact={true} render={() => (<Redirect to="/1" />)} /> */}
           {/* <Redirect path="*" to="/" /> */}
         </Suspense>
       </Switch>

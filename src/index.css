@@ -4,7 +4,9 @@
 
 /* for react-js-pagination css */
 .pagination {
+  display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 ul {
@@ -27,7 +29,7 @@ ul.pagination li {
 
 ul.pagination li a {
   text-decoration: none;
-  color: #337ab7;
+  color: #EF4444;
   font-size: 20px;
 }
 
@@ -35,18 +37,18 @@ ul.pagination li.active a {
   color: white;
 }
 ul.pagination li.active {
-  background-color: #337ab7;
+  background-color: #EF4444;
 }
 
 ul.pagination li a:hover,
 ul.pagination li a.active {
-  color: blue;
+  color: #B91C1C;
 }
 
 .page-selection {
   width: 48px;
   height: 30px;
-  color: #337ab7;
+  color: #F87171;
 }
 
 .pagination-wrapper {

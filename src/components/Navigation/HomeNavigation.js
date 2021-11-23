@@ -15,27 +15,31 @@ function HomeNavigation(data) {
     if (login) {
         return (
             <>
-                <div className="nav__Home">
+            <div class="sticky top-28 z-50 flex justify-end items-center">
+                <div class="text-red-600 p-2">
                     <NavLink to="/" onClick={pageChange}>Home</NavLink>
                 </div>
-                <div className="nav__Logout">
-                    <NavLink to="/logout" onClick={Logout}>Logout</NavLink>
+                <div class="text-red-600 p-2">
+                    <NavLink to="/setting/logout" onClick={Logout}>Logout</NavLink>
                 </div>
-                <div className="nickname">Welcome, {nickname}</div>
+                <div class="text-red-600 text-opacity-50 p-2">Welcome, {nickname}</div>
+            </div>
             </>
         );
     } 
     return (
             <>
-                <div className="nav__Home">
+            <div class="sticky top-28 z-50 flex justify-end items-center">
+                <div class="text-red-600 p-2">
                     <NavLink to="/" onClick={pageChange}>Home</NavLink>
                 </div>
-                <div className="nav__Login">
-                    <NavLink activeClassName="active" to="/login">Login</NavLink>
+                <div class="text-red-600 p-2">
+                    <NavLink to="/setting/login">Login</NavLink>
                 </div>
-                <div className="nickname">Please Login</div>
-            </>
-        );
+                <div class="text-red-600 text-opacity-50 p-2">Please login</div>
+            </div>
+        </>
+    );
 }
 
 export default HomeNavigation;

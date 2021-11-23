@@ -24,17 +24,17 @@ class Home extends React.Component {
     };
 
     componentDidMount() {
-        // this.getArticles();
-        // this.checkUrlPage();
-        // CheckToken();
-        // window.onpopstate = () => {
-        //     const matchParams = this.props.match.params.page;
-        //     if (matchParams === undefined){
-        //         this.setState({currentPage: 1});
-        //     } else {
-        //         this.onChangePage(parseInt(matchParams));
-        //     };
-        // };
+        this.getArticles();
+        this.checkUrlPage();
+        CheckToken();
+        window.onpopstate = () => {
+            const matchParams = this.props.match.params.page;
+            if (matchParams === undefined){
+                this.setState({currentPage: 1});
+            } else {
+                this.onChangePage(parseInt(matchParams));
+            };
+        };
     }
 
     onChangePage = currentPage => {
@@ -115,9 +115,12 @@ class Home extends React.Component {
         return (
             <section className="container">
                 {isLoading ? (
-                    <div className="loader">
-                        <span className="loader__text">Loading...</span>
-                    </div>
+                    <>
+                        <HomeNavigation props={this.props} />
+                        <div class="animate-pulse text-lg">
+                            <span className="loader__text">Loading...</span>
+                        </div>
+                    </>
                 ) : (
                     <>
                         <HomeNavigation props={this.props} />
