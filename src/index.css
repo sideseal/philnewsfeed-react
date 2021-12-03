@@ -21,6 +21,7 @@ ul.pagination li {
   float: left;
   margin-top: 10px;
   margin-right: 20px;
+  margin-bottom: 10px;
   width: 30px;
   display: flex;
   justify-content: center;

@@ -28,17 +28,19 @@
     -->
     <title>Phillib</title>
   </head>
-  <body class="min-h-screen bg-gray-100">
+  <body class="min-h-screen bg-gray-100 flex flex-col">
     <header class="top-0 fixed w-full bg-red-600">
       <div class="inline-flex">
         <p
-          class="h-24 static mb-2 ml-2
-          text-8xl text-left font-semibold leading-tight text-yellow-300 italic 
+          class="static
+          text-7xl h-16 ml-2 mb-3
+          md:text-8xl md:h-20 md:ml-2 md:mt-2
+          text-left font-semibold leading-tight text-yellow-300 italic 
           ">
           PHILLIB!
         </p>
         <p
-        class="static ml-5 mt-11 hidden md:block 
+        class="static ml-5 mt-9 hidden md:block 
         text-2xl uppercase whitespace-nowrap font-normal leading-none text-yellow-300
         ">
           A service to aggregate- <br>
@@ -46,7 +48,7 @@
         </p>
       </div>
     </header>
-    <main class="pt-28 px-10 mx-auto">
+    <main class="flex flex-1 pt-28 grid place-items-center h-screen w-full">
       <div id="root"></div>
     <!--
       This HTML file is a template.
@@ -59,5 +61,12 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
     </main>
+    <footer class="flex items-center justify-center p-2">
+      <p class="text-base text-gray-700">
+        <small>
+          &copy; Copyright 2022, Created by Typiespectre. All Rights Reserved
+        </small>
+      </p>
+    </footer>
   </body>
 </html>

@@ -4,26 +4,27 @@ import PropTypes from "prop-types";
 
 function Article({page,id,name,title,published,link,comments,tags}){
     return (
-            <div className="article__data">
-                <h4 className="article__title">
-                <a href={link}>{title}</a></h4>
-                <h5 className="article__info">{name} | {published} | {tags}</h5>
-                <div className="article__comment">
-                    <Link
-                        to={{
-                            pathname: `/${page}/article/${id}`,
-                            state: {
-                                page: page,
-                                id: id,
-                                name: name,
-                                title: title,
-                                published: published,
-                                link: link,
-                                comments: comments,
-                            }
-                        }}
-                    >
-                    <h5 className="article__detail">{comments} comments</h5>
+            <div class="p-2 block">
+                <p class="md:text-2xl text-xl">
+                    <a href={link}>{title}</a>
+                </p>
+                <p class="text-base inline-block">{name} | {published} | {tags} |</p>
+                    <div class="inline-block">
+                        <Link
+                            to={{
+                                pathname: `/${page}/article/${id}`,
+                                state: {
+                                    page: page,
+                                    id: id,
+                                    name: name,
+                                    title: title,
+                                    published: published,
+                                    link: link,
+                                    comments: comments,
+                                }
+                            }}
+                        >
+                        <p className="article__detail">&nbsp;{comments} comments</p>
                     </Link>
                 </div>
             <hr></hr>

@@ -15,7 +15,7 @@ function HomeNavigation(data) {
     if (login) {
         return (
             <>
-            <div class="sticky top-28 z-50 flex justify-end items-center">
+            <div class="sticky top-20 md:top-28 z-50 flex justify-end items-center">
                 <div class="text-red-600 p-2">
                     <NavLink to="/" onClick={pageChange}>Home</NavLink>
                 </div>
@@ -29,7 +29,7 @@ function HomeNavigation(data) {
     } 
     return (
             <>
-            <div class="sticky top-28 z-50 flex justify-end items-center">
+            <div class="sticky bg-gray-700 top-20 md:top-28 z-50 flex justify-end items-center">
                 <div class="text-red-600 p-2">
                     <NavLink to="/" onClick={pageChange}>Home</NavLink>
                 </div>

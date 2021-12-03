@@ -3,7 +3,8 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 // import HomeNavigation from './components/Navigation/HomeNavigation';
 
 
-const Home = React.lazy(() => import("./routes/Home"));
+// const Home = React.lazy(() => import("./routes/Home"));
+import Home from "./routes/Home";
 const ArticleDetail = React.lazy(() => import("./components/Article/ArticleDetail"));
 const Login = React.lazy(() => import("./routes/Login"));
 const Logout = React.lazy(() => import("./routes/Logout"));
@@ -19,8 +20,8 @@ function App(){
         {aside}
       </header> */}
       <Switch>
+        <Route exact path={["/", "/:page"]} component={Home} />
         <Suspense fallback="Please wait...">
-          <Route exact path={["/", "/:page"]} component={Home} />
           <Route exact path="/setting/login" component={Login} />
           <Route path="/setting/login/register" component={Registration} />
           <Route path="/:page/article/:id" component={ArticleDetail} />

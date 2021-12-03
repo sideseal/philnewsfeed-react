@@ -15,6 +15,7 @@ init: nodejs, npm, npx, git
 9-2. postcss
 9-3. autoprefixer
 9-4. craco
+10. npm-responsive
 
 to-do list
 * [x] comment 정렬 (등록순)

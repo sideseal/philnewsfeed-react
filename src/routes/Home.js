@@ -2,11 +2,12 @@ import React from 'react';
 import axios from 'axios';
 import { cacheAdapterEnhancer } from 'axios-extensions';
 import Pagination from 'react-js-pagination';
+import MediaQuery from 'react-responsive';
 // import Article from '../components/Article/Article';
 import '../index.css'
 import Pages from '../components/Article/Pages';
 import CheckToken from '../functions/CheckToken';
-import HomeNavigation from '../components/Navigation/HomeNavigation';
+// import HomeNavigation from '../components/Navigation/HomeNavigation';
 
 
 const instance = axios.create({
@@ -116,31 +117,49 @@ class Home extends React.Component {
             <section className="container">
                 {isLoading ? (
                     <>
-                        <HomeNavigation props={this.props} />
-                        <div class="animate-pulse text-lg">
-                            <span className="loader__text">Loading...</span>
+                        {/* <HomeNavigation props={this.props} /> */}
+                        <div class="animate-pulse text-lg flex min-h-screen">
+                            <p class="m-auto">
+                                Loading... <br></br>
+                                Navigation underdevelopment... many apologies
+                            </p>
                         </div>
                     </>
                 ) : (
                     <>
-                        <HomeNavigation props={this.props} />
-                        <Pages page={currentPage} articles={articles} />
+                        {/* <HomeNavigation props={this.props} /> */}
+                        <div class="bg-red-500 md:mt-0 -mt-6">
+                            <Pages page={currentPage} articles={articles} />
                         {/* <div className="articles">
                             {articles.map(article => (
                                 <Article key={article.id} id={article.id} name={article.name} title={article.title} published={article.published} link={article.link} comments={article.comments} tags={article.tags} />
                             ))}
                         </div> */}
+                        </div>
                         {/* <ul id="page-numbers">
                             {renderPageNumbers}
                         </ul> */}
-                        <div>
+                        <div className='pagination__desktop'>
+                        <MediaQuery minWidth={767}>
                             <Pagination className="pagination"
                                 activePage={this.state.currentPage}
-                                itemsCountPerPage={10}
+                                itemsCountPerPage={15}
                                 totalItemsCount={articles.length}
                                 pageRangeDisplayed={5}
                                 onChange={this.handleClick.bind(this)}
                             />
+                        </MediaQuery>
+                        </div>
+                        <div className='pagination__mobile'>
+                        <MediaQuery maxWidth={767}>
+                            <Pagination className="pagination"
+                                activePage={this.state.currentPage}
+                                itemsCountPerPage={15}
+                                totalItemsCount={articles.length}
+                                pageRangeDisplayed={1}
+                                onChange={this.handleClick.bind(this)}
+                            />
+                        </MediaQuery>
                         </div>
                     </>
                 )}
