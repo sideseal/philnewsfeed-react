@@ -121,14 +121,13 @@ class Home extends React.Component {
                         <div class="animate-pulse text-lg flex min-h-screen">
                             <p class="m-auto">
                                 Loading... <br></br>
-                                Navigation underdevelopment... many apologies
                             </p>
                         </div>
                     </>
                 ) : (
                     <>
                         {/* <HomeNavigation props={this.props} /> */}
-                        <div class="bg-red-500 md:mt-0 -mt-6">
+                        <div class="bg-red-500 md:mt-0 -mt-6 w-full lg:w-256">
                             <Pages page={currentPage} articles={articles} />
                         {/* <div className="articles">
                             {articles.map(article => (

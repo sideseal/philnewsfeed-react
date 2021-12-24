@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 function Article({page,id,name,title,published,link,comments,tags}){
     return (
-            <div class="p-2 block">
+            <div class="p-3 block">
                 <p class="md:text-2xl text-xl">
                     <a href={link}>{title}</a>
                 </p>

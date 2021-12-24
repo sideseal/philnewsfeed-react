@@ -6,7 +6,12 @@ module.exports = {
       sans: ["Graphik", "sans-serif"],
       serif: ["Merriweather", "serif"],
     },
-    extend: {},
+    extend: {
+      width: {
+        '128': '32rem',
+        '256': '64rem',
+      },
+    },
   },
   variants: {
     extend: {},
