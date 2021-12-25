@@ -57,3 +57,44 @@ ul.pagination li a.active {
   justify-content: space-between;
   margin-top: 10px;
 }
+
+/* for snow css */
+.App{
+  position: fixed;
+	display: flex;
+  z-index: -1;
+	justify-content: space-between;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+
+.Snowflake {
+	display: inline-block;
+	width: 0.1%;
+	color: #FFFAFA;
+	opacity: 0;
+	font-size: 120px;
+	margin: 0;
+	padding: 0;
+	animation: fall 10s linear infinite;
+}
+
+@keyframes fall {
+	0% {
+		opacity: 0;
+	}
+	3% {
+		opacity: 0.9;
+	}
+
+	90% {
+		opacity: 0.9;
+	}
+	100% {
+		transform: translate(0, 97vh);
+		opacity: 0;
+	}
+}

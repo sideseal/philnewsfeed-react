@@ -2,8 +2,6 @@ import React from 'react';
 // import React, { Suspense } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 // import HomeNavigation from './components/Navigation/HomeNavigation';
-
-
 // const Home = React.lazy(() => import("./routes/Home"));
 import Home from "./routes/Home";
 import ArticleDetail from './components/Article/ArticleDetail';

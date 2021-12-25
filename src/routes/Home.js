@@ -16,7 +16,6 @@ const instance = axios.create({
         { enabledByDefault: false })
 })
 
-
 class Home extends React.Component {
     state = {
         isLoading: true,
