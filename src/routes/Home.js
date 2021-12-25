@@ -126,7 +126,7 @@ class Home extends React.Component {
                 ) : (
                     <>
                         {/* <HomeNavigation props={this.props} /> */}
-                        <div class="bg-red-500 md:mt-0 -mt-6 w-full lg:w-256">
+                        <div class="bg-transparent md:mt-0 -mt-6 w-full lg:w-256">
                             <Pages page={currentPage} articles={articles} />
                         {/* <div className="articles">
                             {articles.map(article => (

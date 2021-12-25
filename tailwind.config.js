@@ -11,6 +11,12 @@ module.exports = {
         '128': '32rem',
         '256': '64rem',
       },
+      letterSpacing: {
+        'moreWide': '.35em',
+      },
+      rotate: {
+        '8': '8deg',
+      },
     },
   },
   variants: {

@@ -17,8 +17,7 @@ class Snow extends React.Component {
         let animationDelay = '0s';
         let fontSize = '100px';
         let arr = Array.from(
-            'Snowflakes are awesome!!! I love snowflake, as long as this list, there are much snow here!\
-            Snowflakes are awesome!!! I love snowflake, as long as this list, there are much snow here!'
+            'Snowflakes are awesome!!! I love snowflake, as long as this list, there are much snow here! Snowflakes are awesome!!! I love snowflake, as long as this list, there are much snow here!'
             )
         return arr.map((el, i)=>{
             animationDelay = `${(Math.random()*16).toFixed(2)}s`;

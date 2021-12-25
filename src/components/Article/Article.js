@@ -5,10 +5,10 @@ import PropTypes from "prop-types";
 function Article({page,id,name,title,published,link,comments,tags}){
     return (
             <div class="p-3 block">
-                <p class="md:text-2xl text-xl">
+                <p class="md:text-xl text-xl">
                     <a href={link}>{title}</a>
                 </p>
-                <p class="text-base inline-block">{name} | {published} | {tags} |</p>
+                <p class="text-sm inline-block">{name} | {published} | {tags} </p>
                     <div class="inline-block">
                         <Link
                             to={{
@@ -24,10 +24,11 @@ function Article({page,id,name,title,published,link,comments,tags}){
                                 }
                             }}
                         >
-                        <p className="article__detail">&nbsp;{comments} comments</p>
+                        <div class="text-sm ml-0 p-1">
+                            <p class="">:: {comments} comments</p>
+                        </div>
                     </Link>
                 </div>
-            <hr></hr>
         </div>
     );
 }
