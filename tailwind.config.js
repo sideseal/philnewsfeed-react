@@ -9,6 +9,7 @@ module.exports = {
     extend: {
       width: {
         '128': '32rem',
+        '192': '48rem',
         '256': '64rem',
       },
       letterSpacing: {

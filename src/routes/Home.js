@@ -3,6 +3,8 @@ import axios from 'axios';
 import { cacheAdapterEnhancer } from 'axios-extensions';
 import Pagination from 'react-js-pagination';
 import MediaQuery from 'react-responsive';
+import { faSearch, faCircleNotch } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import Article from '../components/Article/Article';
 import '../index.css'
 import Pages from '../components/Article/Pages';
@@ -21,6 +23,7 @@ class Home extends React.Component {
         isLoading: true,
         articles: [],
         currentPage: 1,
+        settingArticles: [],
     };
 
     componentDidMount() {
@@ -73,7 +76,8 @@ class Home extends React.Component {
                 // CheckToken(resp.config.headers.Authorization);
                 const articles = resp.data.body;
                 this.setState({ 
-                    articles: articles, 
+                    articles: articles,
+                    settingArticles: articles,
                     isLoading: false,
                 });
             });
@@ -92,8 +96,33 @@ class Home extends React.Component {
         window.scrollTo(0, 0); 
     }
 
+    searchItem(query) {
+        if (!query) {
+            const articles = this.state.articles;
+            this.setState({
+                settingArticles: articles,
+            });
+        } else {
+            query = query.replace(/\ /g, '').toLowerCase();
+            const result = [];
+            const data = this.state.articles;
+            data.forEach((item) => {
+                if (
+                    item.title.toLowerCase().indexOf(query) !== -1 ||
+                    item.tags.toLowerCase().indexOf(query) !== -1 ||
+                    item.name.toLowerCase().indexOf(query) !== -1
+                ) {
+                    result.push(item);
+                }
+            });
+            this.setState({
+                settingArticles: result,
+            });
+        };
+    };
+
     render() {
-        const { isLoading, articles, currentPage } = this.state;
+        const { isLoading, currentPage, settingArticles } = this.state;
 
         // // Logic for Pagination
         // const pageNumbers = [];
@@ -119,6 +148,8 @@ class Home extends React.Component {
                         {/* <HomeNavigation props={this.props} /> */}
                         <div class="animate-pulse text-lg flex min-h-screen">
                             <p class="m-auto">
+                                <FontAwesomeIcon icon={faCircleNotch} spin />
+                                &nbsp;
                                 Loading... <br></br>
                             </p>
                         </div>
@@ -126,8 +157,22 @@ class Home extends React.Component {
                 ) : (
                     <>
                         {/* <HomeNavigation props={this.props} /> */}
-                        <div class="bg-transparent md:mt-0 -mt-6 w-full lg:w-256">
-                            <Pages page={currentPage} articles={articles} />
+                        <div class="sticky top-0 float-right z-5 w-auto">
+                            <i class="absolute text-gray-400 top-1.5 left-4 md:left-6">
+                            <FontAwesomeIcon
+                            size="sm"
+                            icon={faSearch} />
+                            </i>
+                            &nbsp;
+                            <input
+                              class="bg-white h-9 px-8 md:px-12 rounded-lg focus:outline-none hover:cursor-pointer"
+                              type="text"
+                              onChange={(e) => this.searchItem(e.target.value)}
+                              placeholder='Search Articles'
+                            />
+                        </div>
+                        <div class="bg-transparent md:mt-0 -mt-6 w-128 md:w-192">
+                            <Pages page={currentPage} articles={settingArticles} />
                         {/* <div className="articles">
                             {articles.map(article => (
                                 <Article key={article.id} id={article.id} name={article.name} title={article.title} published={article.published} link={article.link} comments={article.comments} tags={article.tags} />
@@ -142,7 +187,7 @@ class Home extends React.Component {
                             <Pagination className="pagination"
                                 activePage={this.state.currentPage}
                                 itemsCountPerPage={15}
-                                totalItemsCount={articles.length}
+                                totalItemsCount={settingArticles.length}
                                 pageRangeDisplayed={5}
                                 onChange={this.handleClick.bind(this)}
                             />
@@ -153,7 +198,7 @@ class Home extends React.Component {
                             <Pagination className="pagination"
                                 activePage={this.state.currentPage}
                                 itemsCountPerPage={15}
-                                totalItemsCount={articles.length}
+                                totalItemsCount={settingArticles.length}
                                 pageRangeDisplayed={1}
                                 onChange={this.handleClick.bind(this)}
                             />

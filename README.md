@@ -16,6 +16,9 @@ init: nodejs, npm, npx, git
 9-3. autoprefixer
 9-4. craco
 10. npm-responsive
+11-1. @fortawesome/fontawesome-svg-core
+11-2. @fortawesome/free-solid-svg-icons @fortawesome/free-regular-svg-icons @fortawesome/free-brands-svg-icons
+11-3. @fortawesome/react-fontawesome
 
 to-do list
 * [x] comment 정렬 (등록순)
@@ -36,7 +39,7 @@ to-do list
 * [ ] loadish나 axios cancel을 이용하여 불필요한 api 콜 줄이기
 * [x] pagination 기능 조금 더 손보기 (완전하지 않음... 가령 페이지 이동 시 맨 위로 이동하거나... 페이지 url 입력 시 이동되로록 만들거나...)
 * [ ] 로그인 기능을 다시 생각해보기. 반드시 로그인이 필요할까... (만약 필요하다면 코드 리팩토링하기)
-* [ ] 가끔씩 마운팅 두 번 되는 경우 수정하기
+* [x] 가끔씩 마운팅 두 번 되는 경우 수정하기
 * [ ] 코멘트 불러오기 빠르게 하기
 * [ ] 다크모드 설정하기
 * [ ] 내비게이션바 고민
